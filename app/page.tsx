@@ -3396,7 +3396,7 @@ export default function Page() {
                         </div>
                         <h3 className="font-display text-2xl font-bold">Admin Login</h3>
                         <p className="text-white/30 text-sm mt-2">
-                          Demo: <span className="text-cyan-400 font-semibold">admin / admin123</span>
+                          Demo: <span className="text-cyan-400 font-semibold">admin / </span>
                         </p>
                       </div>
 
