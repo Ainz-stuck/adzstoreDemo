@@ -1058,7 +1058,9 @@ export default function Page() {
             <style>
               *{margin:0;padding:0;box-sizing:border-box}
               body{font-family:'Montserrat',sans-serif;background:linear-gradient(135deg,#080C14,#111827);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-              .receipt{background:white;padding:44px;border-radius:28px;max-width:500px;width:100%;box-shadow:0 40px 80px rgba(0,0,0,0.5)}
+              .receipt{background:white;padding:44px;border-radius:28px;max-width:500px;width:100%;box-shadow:0 40px 80px rgba(0,0,0,0.5);position:relative}
+              .close-btn{position:absolute;top:18px;right:18px;width:34px;height:34px;border:none;border-radius:999px;background:#f1f5f9;color:#334155;font-size:22px;font-weight:700;line-height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s ease}
+              .close-btn:hover{background:#e2e8f0;color:#0f172a;transform:scale(1.05)}
               .brand{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:700;background:linear-gradient(135deg,#06b6d4,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;letter-spacing:0.05em}
               .subtitle{text-align:center;color:#94a3b8;font-size:13px;margin-top:6px}
               .divider{border:none;border-top:2px dashed #e2e8f0;margin:22px 0}
@@ -1069,6 +1071,7 @@ export default function Page() {
           </head>
           <body>
             <div class="receipt">
+              <button class="close-btn" onclick="returnToMainPage()" aria-label="Return to main page" title="Return to main page">×</button>
               <div class="brand">ADZ STORE</div>
               <div class="subtitle">Official Order Receipt</div>
               <hr class="divider">
@@ -1083,6 +1086,19 @@ export default function Page() {
               <div class="total"><span>Total</span><span>₱${total.toLocaleString()}</span></div>
               <div class="success">✅ Order Created — Seller will verify and prepare your order.</div>
             </div>
+            <script>
+              function returnToMainPage() {
+                if (window.opener && !window.opener.closed) {
+                  window.opener.focus();
+                  window.close();
+                  setTimeout(function () {
+                    window.location.href = "/";
+                  }, 200);
+                } else {
+                  window.location.href = "/";
+                }
+              }
+            </script>
           </body>
         </html>
       `);
